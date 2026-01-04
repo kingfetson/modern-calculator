@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modern Calculator — Memory Stack</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="calculator" role="application" aria-label="Calculator">
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo">Calc</div>
+          <div class="subtitle">Modern</div>
+        </div>
+
+        <div class="toggles">
+          <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-pressed="false">🌓</button>
+          <button class="icon-btn" id="modeToggle" title="DEG / RAD" aria-pressed="false">DEG</button>
+          <button class="icon-btn" id="historyToggle" title="Show history">📜</button>
+        </div>
+      </div>
+
+      <div class="display" id="display" aria-live="polite">
+        <div id="expression" class="expression"></div>
+        <div id="result" class="result">0</div>
+      </div>
+
+      <div class="mem-row" aria-hidden="false">
+        <div class="mem-controls">
+          <button class="btn fun small" id="memClearAll" title="Clear all memory (MC)">MC</button>
+          <button class="btn fun small" id="memPush" title="Push current value to memory (Push)">MPush</button>
+          <button class="btn fun small" id="memPop" title="Pop top memory to input (Pop)">MPop</button>
+          <button class="btn fun small" id="memAdd" title="Add current value to top memory (M+)">M+</button>
+          <button class="btn fun small" id="memSub" title="Subtract current value from top memory (M-)">M-</button>
+        </div>
+        <div class="mem-indicator" id="memIndicator" aria-hidden="true">M: 0</div>
+      </div>
+
+      <div class="mem-slots" id="memSlots" aria-label="Memory slots" role="list"></div>
+
+      <div class="keys" role="group" aria-label="Calculator keys">
+        <!-- Row 1: functions -->
+        <button class="btn fun" data-value="sin(" aria-label="sin">sin</button>
+        <button class="btn fun" data-value="cos(" aria-label="cos">cos</button>
+        <button class="btn fun" data-value="tan(" aria-label="tan">tan</button>
+        <button class="btn fun" data-value="sqrt(" aria-label="sqrt">√</button>
+
+        <!-- Row 2 -->
+        <button class="btn fun" data-action="clear" aria-label="Clear (C)">C</button>
+        <button class="btn fun" data-action="delete" aria-label="Delete (⌫)">⌫</button>
+        <button class="btn fun" data-value="(" aria-label="Open parenthesis">(</button>
+        <button class="btn op" data-value="/" aria-label="Divide">÷</button>
+
+        <!-- Row 3 -->
+        <button class="btn" data-value="7">7</button>
+        <button class="btn" data-value="8">8</button>
+        <button class="btn" data-value="9">9</button>
+        <button class="btn op" data-value="*" aria-label="Multiply">×</button>
+
+        <!-- Row 4 -->
+        <button class="btn" data-value="4">4</button>
+        <button class="btn" data-value="5">5</button>
+        <button class="btn" data-value="6">6</button>
+        <button class="btn op" data-value="-" aria-label="Minus">−</button>
+
+        <!-- Row 5 -->
+        <button class="btn" data-value="1">1</button>
+        <button class="btn" data-value="2">2</button>
+        <button class="btn" data-value="3">3</button>
+        <button class="btn op" data-value="+" aria-label="Plus">+</button>
+
+        <!-- Row 6 -->
+        <button class="btn" data-value="0" style="grid-column: span 2;">0</button>
+        <button class="btn" data-value="." aria-label="Decimal point">.</button>
+        <button class="btn eq" data-action="equals" aria-label="Equals">=</button>
+
+        <!-- Extra row: utility -->
+        <button class="btn fun" data-value="^" aria-label="Power">^</button>
+        <button class="btn fun" data-value="%" aria-label="Percent">%</button>
+        <button class="btn fun" data-value="log(" aria-label="log">log</button>
+        <button class="btn fun" data-value="ln(" aria-label="ln">ln</button>
+      </div>
+
+      <footer class="credits">
+        <small>Keyboard supported — Enter = equals, Backspace = delete, Escape = clear. Click memory slots to recall. History stores past results.</small>
+      </footer>
+    </div>
+
+    <aside class="history-panel" id="historyPanel" aria-hidden="true">
+      <div class="history-header">
+        <h3>History</h3>
+        <div>
+          <button class="icon-btn" id="clearHistory" title="Clear history">🗑️</button>
+        </div>
+      </div>
+      <ul id="historyList" class="history-list" role="list"></ul>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
